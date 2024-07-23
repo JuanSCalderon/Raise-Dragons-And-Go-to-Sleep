@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Raise-Dragons-And-Go-to-Sleep.sln"
+    "dotnet.defaultSolution": "Raise Dragons And Go to Sleep.sln"
 }
