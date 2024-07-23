@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b3ba82cbf81c8a46b2dd959c4ca205e
+guid: 2719f82880f0c1648b6547f5c8726cab
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: exclamatio_0
+      name: exclamation_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52f09a56e4f57014e84c8c0043ffd88f
-      internalID: -1901066435
+      spriteID: 45ae33e57e9b52c4e99d82b6238a1ed5
+      internalID: 1262202423
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_1
+      name: exclamation_1
       rect:
         serializedVersion: 2
         x: 16
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 915df84c5c6cd74498cec530c5a34d81
-      internalID: 523471657
+      spriteID: ebebd568bc09dd645882659aa815abda
+      internalID: -602741866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_2
+      name: exclamation_2
       rect:
         serializedVersion: 2
         x: 32
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10a270c530fbedf469af247eada58cf4
-      internalID: -649275142
+      spriteID: 9eee1cc8716216c46b98bdc552c1e7e3
+      internalID: -1676608551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_3
+      name: exclamation_3
       rect:
         serializedVersion: 2
         x: 48
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00c310b029a256d4e925f6a3ef278d6a
-      internalID: -1150261606
+      spriteID: af3a9547490cfa54abc273d47d760f55
+      internalID: -1979042413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_4
+      name: exclamation_4
       rect:
         serializedVersion: 2
         x: 64
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a0b0699fe9df7a4f9d445d83695fcdc
-      internalID: 307954185
+      spriteID: e38c5ba20177b4542bd9d1342a21d5de
+      internalID: 1682055998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_5
+      name: exclamation_5
       rect:
         serializedVersion: 2
         x: 80
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94aa661f4bb429641bb8168426c69019
-      internalID: -842096914
+      spriteID: 1108233115cb9a240b2e426bce4ddb56
+      internalID: 1013934800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_6
+      name: exclamation_6
       rect:
         serializedVersion: 2
         x: 96
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0f6f53e09c74fd4e90f48212b4e6702
-      internalID: -1120327000
+      spriteID: 04c5662aa3d42b04a938e531d95ba075
+      internalID: -264225515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exclamatio_7
+      name: exclamation_7
       rect:
         serializedVersion: 2
         x: 112
@@ -278,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40accd7d6aaef9849a5acc1fe6e36100
-      internalID: 17575177
+      spriteID: 4ad0d0ed9aecc96428664c65892d995b
+      internalID: 161120263
       vertices: []
       indices: 
       edges: []
@@ -295,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      exclamatio_0: -1901066435
-      exclamatio_1: 523471657
-      exclamatio_2: -649275142
-      exclamatio_3: -1150261606
-      exclamatio_4: 307954185
-      exclamatio_5: -842096914
-      exclamatio_6: -1120327000
-      exclamatio_7: 17575177
+      exclamation_0: 1262202423
+      exclamation_1: -602741866
+      exclamation_2: -1676608551
+      exclamation_3: -1979042413
+      exclamation_4: 1682055998
+      exclamation_5: 1013934800
+      exclamation_6: -264225515
+      exclamation_7: 161120263
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
