@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: 0
+    uniqueID: 816050379
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: primer nivel
     uniqueID: 155834807
+    locked: 0
+  - name: ' 4'
+    uniqueID: 2108166867
     locked: 0
