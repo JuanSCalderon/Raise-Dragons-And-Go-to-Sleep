@@ -4,29 +4,43 @@ using UnityEngine;
 
 public class PlayerController1 : MonoBehaviour
 {
-  public float speed;
+    public float speed;
     private Vector2 moveAxis;
     private Vector2 moveDir;
     private Rigidbody2D rb;
-    
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Capturar entrada del jugador en los ejes horizontales y verticales
         moveAxis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        
-        // Normalizar el vector de movimiento si su magnitud es mayor que 1
+
         if (moveAxis.magnitude > 1)
         {
             moveAxis.Normalize();
         }
-        
-        // Multiplicar por la velocidad
+
         moveDir = moveAxis * speed;
+
+        // Actualizar el Animator con el estado de caminar
+        animator.SetBool("walking", moveAxis.magnitude > 0);
+
+        // Voltear el sprite en el eje X basado en la dirección del movimiento horizontal
+        if (moveAxis.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (moveAxis.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     void FixedUpdate()
