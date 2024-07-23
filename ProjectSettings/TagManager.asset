@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Vegetable
+  - Shadow
+  - Tierra
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: tercer nivel
+    uniqueID: 617612909
+    locked: 0
+  - name: segundo nivel
+    uniqueID: 1915230159
+    locked: 0
+  - name: primer nivel
+    uniqueID: 155834807
     locked: 0
