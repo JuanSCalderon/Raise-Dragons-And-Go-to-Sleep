@@ -1,0 +1,119 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Recolection : MonoBehaviour
+{
+  private int coliflor = 0;
+    private int remolacha = 0;
+    private Vegetable currentVegetable = null;
+    private float delay;
+    private bool isInTierraZone = false;
+
+    // Lista para mantener referencias a los vegetales
+    private List<GameObject> vegetableList = new List<GameObject>();
+
+    private void Start()
+    {
+        // Encuentra y agrega todos los vegetales en la escena al inicio
+        AddAllVegetablesToList();
+        
+
+    }
+
+    private void Update()
+    {
+        if (currentVegetable != null && Input.GetKeyDown(KeyCode.R))
+        {
+            CollectVegetable(currentVegetable.vegetableType);
+            currentVegetable.gameObject.SetActive(false);
+            currentVegetable = null;
+        }
+
+        if (isInTierraZone && Input.GetKeyDown(KeyCode.Space))
+        {
+            UpdateRandomDelay();
+            StartCoroutine(ActivateVegetablesAfterDelay());
+            Debug.Log("Estás en la zona de tierra y se activarán los vegetales de 1 a 2 minutos.");
+        }
+    }
+    private void UpdateRandomDelay()
+    {
+        // Establece delay con un nuevo valor aleatorio
+        delay = UnityEngine.Random.Range(60f, 120f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Vegetable"))
+        {
+            currentVegetable = other.gameObject.GetComponent<Vegetable>();
+        }
+        else if (other.gameObject.CompareTag("Tierra"))
+        {
+            isInTierraZone = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Vegetable"))
+        {
+            currentVegetable = null;
+        }
+        else if (other.gameObject.CompareTag("Tierra"))
+        {
+            isInTierraZone = false;
+        }
+    }
+
+    private IEnumerator ActivateVegetablesAfterDelay()
+    {
+        // Espera el tiempo especificado en segundos
+        yield return new WaitForSeconds(delay);
+
+        // Activa todos los vegetales en la lista
+        foreach (GameObject vegetable in vegetableList)
+        {
+            vegetable.SetActive(true);
+            Debug.Log("Los vegetales se cultivaron en "+ delay+ " segundos.");
+        }
+        Debug.Log("Todos los vegetales han sido activados.");
+    }
+
+    private void AddAllVegetablesToList()
+    {
+        // Encuentra todos los objetos con la etiqueta "Vegetable" y agrégales a la lista
+        GameObject[] vegetables = GameObject.FindGameObjectsWithTag("Vegetable");
+        vegetableList.Clear();
+        vegetableList.AddRange(vegetables);
+    }
+
+
+    void CollectVegetable(Vegetable.VegetableType vegetableType){
+        float randomValue = UnityEngine.Random.value;
+
+        // 50% de probabilidad para entregar el vegetal
+        if (randomValue > 0.20f)
+        {
+            switch (vegetableType)
+            {
+                case Vegetable.VegetableType.Beet:
+                    remolacha++;
+                    break;
+                case Vegetable.VegetableType.Cauliflower:
+                    coliflor++;
+                    break;
+            }
+            // Agregar aqui el código para la interfaz de usuario
+            Debug.Log("Beets: " + remolacha + ", Cauliflowers: " + coliflor);
+        }
+        else
+        {
+            Debug.Log("El vegetal no fue entregado.");
+        }
+    }
+}
+
+
+
