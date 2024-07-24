@@ -19,6 +19,11 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] Sprite selectedStateSprite;
     [SerializeField] Sprite normalStateSpriteRun;
     [SerializeField] Sprite selectedStateSpriteRun;
+    [SerializeField] Sprite normalStateSpriteTalk;
+    [SerializeField] Sprite selectedStateSpriteTalk;
+    [SerializeField] Sprite normalStateSpriteRunItem;
+    [SerializeField] Sprite selectedStateSpriteRunItem;
+    
 
 
     public void SetDialog(string dialog)
@@ -58,13 +63,28 @@ public class BattleDialogBox : MonoBehaviour
         {
             Image parentImage = actionTexts[i].GetComponentInParent<Image>();
             if (i == selectedAction)
-            {
+            
                 parentImage.sprite = i == 0 ? selectedStateSprite : selectedStateSpriteRun;
-            }
+            
             else
-            {
+            
                 parentImage.sprite = i == 0 ? normalStateSprite : normalStateSpriteRun;
-            }
+            
+        }
+    }
+
+    public void UpdateMoveSelection(int selectedMove)
+    {
+        for (int i = 0; i < moveTexts.Count; ++i)
+        {
+            if (i == selectedMove)
+            
+                moveTexts[i].color = highlightedColor;
+            
+            else
+            
+                moveTexts[i].color = Color.black;
+            
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class PlayerController1 : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    public event Action OnEncountered;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,7 +21,7 @@ public class PlayerController1 : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    public void HandleUpdate()
     {
         moveAxis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
@@ -47,4 +50,13 @@ public class PlayerController1 : MonoBehaviour
     {
         rb.velocity = moveDir * Time.fixedDeltaTime;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Dragon"))
+    {
+        animator.SetBool("walking", false);
+        OnEncountered();
+    }
+}
 }
