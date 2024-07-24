@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // Cambiar la música cuando se inicie el juego
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(2);
         AudioManager.Instance.PlaySFX(sFxStart);
         AudioManager.Instance.PlayMusic(gameMusic);
     }
