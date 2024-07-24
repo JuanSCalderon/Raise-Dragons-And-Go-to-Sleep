@@ -21,24 +21,26 @@ public class ClickButton : MonoBehaviour, IPointerClickHandler
     {
         _isPressed = !_isPressed;
 
-        if (_isPressed)
+        if (_img != null)
         {
-            _img.sprite = _pressed;
-            _source.PlayOneShot(_compressClip);
-        }
-        else
-        {
-            _img.sprite = _default;
-            _source.PlayOneShot(_uncompressClip);
+            _img.sprite = _isPressed ? _pressed : _default;
         }
 
-        if (_panelToActivate.activeSelf)
+        if (_source != null)
         {
-            DeactivatePanel();
+            _source.PlayOneShot(_isPressed ? _compressClip : _uncompressClip);
         }
-        else
+
+        if (_panelToActivate != null)
         {
-            ActivatePanel();
+            if (_panelToActivate.activeSelf)
+            {
+                DeactivatePanel();
+            }
+            else
+            {
+                ActivatePanel();
+            }
         }
 
         Clicked();
@@ -51,47 +53,69 @@ public class ClickButton : MonoBehaviour, IPointerClickHandler
 
     private void ActivatePanel()
     {
-        // Guardar el panel previamente activo
-        _previousPanel = null;
-        foreach (GameObject panel in _panelsToDeactivate)
+        if (_panelToActivate != null)
         {
-            if (panel.activeSelf)
+            // Guardar el panel previamente activo
+            _previousPanel = null;
+            foreach (GameObject panel in _panelsToDeactivate)
             {
-                _previousPanel = panel;
-                panel.SetActive(false);
+                if (panel != null && panel.activeSelf)
+                {
+                    _previousPanel = panel;
+                    panel.SetActive(false);
+                }
             }
-        }
 
-        _panelToActivate.SetActive(true);
-        _img.sprite = _pressed;
-        _source.PlayOneShot(_compressClip);
+            _panelToActivate.SetActive(true);
 
-        // Reset other buttons' state
-        foreach (ClickButton button in FindObjectsOfType<ClickButton>())
-        {
-            if (button != this && button._panelToActivate.activeSelf)
+            if (_img != null)
             {
-                button.DeactivatePanel();
+                _img.sprite = _pressed;
+            }
+
+            if (_source != null)
+            {
+                _source.PlayOneShot(_compressClip);
+            }
+
+            // Reset other buttons' state
+            foreach (ClickButton button in FindObjectsOfType<ClickButton>())
+            {
+                if (button != this && button._panelToActivate != null && button._panelToActivate.activeSelf)
+                {
+                    button.DeactivatePanel();
+                }
             }
         }
     }
 
     private void DeactivatePanel()
     {
-        _panelToActivate.SetActive(false);
-        _img.sprite = _default;
-        _source.PlayOneShot(_uncompressClip);
+        if (_panelToActivate != null)
+        {
+            _panelToActivate.SetActive(false);
 
-        // Activar el panel previamente activo
-        if (_previousPanel != null)
-        {
-            _previousPanel.SetActive(true);
-            _previousPanel = null;  // Resetear el panel previo después de activarlo
-        }
-        else
-        {
-            // Si no hay panel previamente activo, activar el menú principal
-            _mainMenuPanel.SetActive(true);
+            if (_img != null)
+            {
+                _img.sprite = _default;
+            }
+
+            if (_source != null)
+            {
+                _source.PlayOneShot(_uncompressClip);
+            }
+
+            // Activar el panel previamente activo
+            if (_previousPanel != null)
+            {
+                _previousPanel.SetActive(true);
+                _previousPanel = null;  // Resetear el panel previo después de activarlo
+            }
+            else if (_mainMenuPanel != null)
+            {
+                // Si no hay panel previamente activo, activar el menú principal
+                _mainMenuPanel.SetActive(true);
+            }
         }
     }
 }
