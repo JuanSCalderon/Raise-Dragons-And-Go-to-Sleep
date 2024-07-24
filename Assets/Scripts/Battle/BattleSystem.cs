@@ -137,7 +137,7 @@ IEnumerator RunAttempt()
     }
     dialogBox.UpdateActionSelection(currentAction);
 
-    if (Input.GetKeyDown(KeyCode.Z))
+    if (Input.GetKeyDown(KeyCode.Space))
     {
         switch (currentAction)
         {
@@ -182,7 +182,7 @@ void HandleMoveSelection(){
     }
     dialogBox.UpdateMoveSelection(currentMove);
 
-    if (Input.GetKeyDown(KeyCode.Z))
+    if (Input.GetKeyDown(KeyCode.Space))
     {
         dialogBox.EnableMoveSelector(false);
         dialogBox.EnableDialogText(true);

@@ -83,7 +83,7 @@ public void Setup()
 {
     image.sprite = isPlayer ? playerSprite : dragonSprite;
 
-    PlayMoveAnimation();
+    PlayEnterAnimation();
 
     Moves = new List<Move>()
     {
@@ -94,7 +94,7 @@ public void Setup()
     };
 
     image.color = originalColor;
-    PlayEnterAnimation();
+    
 }
     // public bool TakeDamage(Move move)
     // {
