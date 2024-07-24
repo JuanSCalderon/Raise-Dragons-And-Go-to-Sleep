@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Recolection : MonoBehaviour
 {
-  private int coliflor = 0;
+    private int coliflor = 0;
     private int remolacha = 0;
+     public int RemolachaCount => remolacha;
+    public int ColiflorCount => coliflor;
     private Vegetable currentVegetable = null;
     private float delay;
     private bool isInTierraZone = false;
@@ -17,8 +19,7 @@ public class Recolection : MonoBehaviour
     private void Start()
     {
         // Encuentra y agrega todos los vegetales en la escena al inicio
-        AddAllVegetablesToList();  
-
+        AddAllVegetablesToList(); 
     }
 
     private void Update()
@@ -96,7 +97,7 @@ public class Recolection : MonoBehaviour
     }
 
 
-    void CollectVegetable(Vegetable.VegetableType vegetableType){
+    public void CollectVegetable(Vegetable.VegetableType vegetableType){
         float randomValue = UnityEngine.Random.value;
 
         // 50% de probabilidad para entregar el vegetal
@@ -117,6 +118,11 @@ public class Recolection : MonoBehaviour
         else
         {
             Debug.Log("El vegetal no fue entregado.");
+        }
+
+        // esta parte del codigo se encargará de que si alcanza x cantidad de comida, la escena se haga de noche
+        if(remolacha + coliflor == 10 ){
+
         }
     }
 }
