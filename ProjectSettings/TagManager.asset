@@ -11,6 +11,7 @@ TagManager:
   - JoungDragon
   - AdultDragon
   - House
+  - Dragon
   layers:
   - Default
   - TransparentFX
