@@ -1070,7 +1070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &315642926
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1150,6 +1150,9 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 0}
+  _panelsToDeactivate: []
+  _mainMenuPanel: {fileID: 0}
 --- !u!114 &331949136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,7 +1266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &427973868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1302,6 +1305,9 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 0}
+  _panelsToDeactivate: []
+  _mainMenuPanel: {fileID: 0}
 --- !u!114 &427973870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,8 +1412,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!1 &445771385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1793,9 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 0}
+  _panelsToDeactivate: []
+  _mainMenuPanel: {fileID: 0}
 --- !u!114 &680670377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,6 +1948,10 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 315642925}
+  _panelsToDeactivate:
+  - {fileID: 445771385}
+  _mainMenuPanel: {fileID: 445771385}
 --- !u!114 &734209065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,7 +2045,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1902884346}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2044,7 +2057,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 551722112}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2056,7 +2069,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!1 &748968335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,6 +2900,9 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 0}
+  _panelsToDeactivate: []
+  _mainMenuPanel: {fileID: 0}
 --- !u!1 &1299182654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,6 +3240,11 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 0}
+  _panelsToDeactivate:
+  - {fileID: 0}
+  - {fileID: 0}
+  _mainMenuPanel: {fileID: 0}
 --- !u!114 &1303309265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4242,7 +4263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1841534138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4329,8 +4350,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+          m_BoolArgument: 0
+        m_CallState: 0
       - m_Target: {fileID: 551722112}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -4342,7 +4363,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &1841534140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4361,6 +4382,9 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 0}
+  _panelsToDeactivate: []
+  _mainMenuPanel: {fileID: 0}
 --- !u!114 &1841534141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4416,7 +4440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1902884347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4813,6 +4837,10 @@ MonoBehaviour:
   _compressClip: {fileID: 0}
   _uncompressClip: {fileID: 0}
   _source: {fileID: 0}
+  _panelToActivate: {fileID: 551722112}
+  _panelsToDeactivate:
+  - {fileID: 315642925}
+  _mainMenuPanel: {fileID: 445771385}
 --- !u!114 &2130016820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4867,8 +4895,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+          m_BoolArgument: 0
+        m_CallState: 0
       - m_Target: {fileID: 445771385}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -4880,7 +4908,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1902884346}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -4892,7 +4920,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &2130016821
 MonoBehaviour:
   m_ObjectHideFlags: 0
