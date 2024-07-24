@@ -9,6 +9,7 @@ public class Recolection : MonoBehaviour
     private Vegetable currentVegetable = null;
     private float delay;
     private bool isInTierraZone = false;
+    [SerializeField] private ParticleSystem particulas;
 
     // Lista para mantener referencias a los vegetales
     private List<GameObject> vegetableList = new List<GameObject>();
@@ -16,8 +17,7 @@ public class Recolection : MonoBehaviour
     private void Start()
     {
         // Encuentra y agrega todos los vegetales en la escena al inicio
-        AddAllVegetablesToList();
-        
+        AddAllVegetablesToList();  
 
     }
 
@@ -32,9 +32,13 @@ public class Recolection : MonoBehaviour
 
         if (isInTierraZone && Input.GetKeyDown(KeyCode.Space))
         {
+            bool hasInactiveVegetables = vegetableList.Exists(veg => !veg.activeSelf);
+            if (hasInactiveVegetables){
             UpdateRandomDelay();
             StartCoroutine(ActivateVegetablesAfterDelay());
+            particulas.Play();
             Debug.Log("Estás en la zona de tierra y se activarán los vegetales de 1 a 2 minutos.");
+            }
         }
     }
     private void UpdateRandomDelay()
@@ -77,6 +81,8 @@ public class Recolection : MonoBehaviour
         {
             vegetable.SetActive(true);
             Debug.Log("Los vegetales se cultivaron en "+ delay+ " segundos.");
+            particulas.Stop();
+
         }
         Debug.Log("Todos los vegetales han sido activados.");
     }

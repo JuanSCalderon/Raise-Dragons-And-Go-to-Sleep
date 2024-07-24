@@ -15,6 +15,16 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> actionTexts;
     [SerializeField] List<TextMeshProUGUI> moveTexts;
 
+    [SerializeField] Sprite normalStateSprite;
+    [SerializeField] Sprite selectedStateSprite;
+    [SerializeField] Sprite normalStateSpriteRun;
+    [SerializeField] Sprite selectedStateSpriteRun;
+    [SerializeField] Sprite normalStateSpriteTalk;
+    [SerializeField] Sprite selectedStateSpriteTalk;
+    [SerializeField] Sprite normalStateSpriteRunItem;
+    [SerializeField] Sprite selectedStateSpriteRunItem;
+    
+
 
     public void SetDialog(string dialog)
     {
@@ -51,14 +61,30 @@ public class BattleDialogBox : MonoBehaviour
     {
         for (int i = 0; i < actionTexts.Count; ++i)
         {
+            Image parentImage = actionTexts[i].GetComponentInParent<Image>();
             if (i == selectedAction)
-            {
-                actionTexts[i].color = highlightedColor;
-            }
+            
+                parentImage.sprite = i == 0 ? selectedStateSprite : selectedStateSpriteRun;
+            
             else
-            {
-                actionTexts[i].color = Color.black;
-            }
+            
+                parentImage.sprite = i == 0 ? normalStateSprite : normalStateSpriteRun;
+            
+        }
+    }
+
+    public void UpdateMoveSelection(int selectedMove)
+    {
+        for (int i = 0; i < moveTexts.Count; ++i)
+        {
+            if (i == selectedMove)
+            
+                moveTexts[i].color = highlightedColor;
+            
+            else
+            
+                moveTexts[i].color = Color.black;
+            
         }
     }
 

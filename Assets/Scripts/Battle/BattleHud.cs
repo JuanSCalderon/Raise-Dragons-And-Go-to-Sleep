@@ -8,12 +8,15 @@ public class BattleHud : MonoBehaviour
 {
     [SerializeField] HPBar hpBar;
     [SerializeField] TMP_Text nameText;
-    [SerializeField] TMP_Text levelText;
 
-    public void SetHUD()
+    public void SetHUD(BattleUnit player)
     {
-        nameText.text = "Dragon Boss";
-        levelText.text = "Lvl 30";
+    //    _player = player;
+        nameText.text = "Player";
         hpBar.SetHP((float) 45 / 50);
     }
+    // public void UpdateHP()
+    //     {
+    //     hpBar.SetHP((float) _player.HP / _player.MaxHP);
+    // }
 }
