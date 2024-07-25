@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Importar SceneManagement
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -24,16 +25,20 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null) {
+        if (Instance != null)
+        {
             DestroyImmediate(gameObject);
-        } else {
+        }
+        else
+        {
             Instance = this;
         }
     }
 
     private void OnDestroy()
     {
-        if (Instance == this) {
+        if (Instance == this)
+        {
             Instance = null;
         }
     }
@@ -43,6 +48,8 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
 
+        retryButton.onClick.AddListener(RetryGame);
+
         NewGame();
     }
 
@@ -50,7 +57,8 @@ public class GameManager : MonoBehaviour
     {
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
 
-        foreach (var obstacle in obstacles) {
+        foreach (var obstacle in obstacles)
+        {
             Destroy(obstacle.gameObject);
         }
 
@@ -99,4 +107,8 @@ public class GameManager : MonoBehaviour
         hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
     }
 
+    public void RetryGame()
+    {
+        SceneManager.LoadScene("FarmScene");
+    }
 }
