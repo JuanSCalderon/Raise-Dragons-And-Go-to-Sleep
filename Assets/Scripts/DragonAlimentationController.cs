@@ -29,8 +29,8 @@ public class DragonAlimentationController : MonoBehaviour
     public int ComidaAdultDragonCount => comidaDadaAdultDragon;
 
     private bool isCollidingWithDragon = false;
-    [SerializeField] private int comidaParaYoungDragon = 5;
-    [SerializeField] private int comidaParaAdultDragon = 10;
+     public int comidaParaYoungDragon = 5;
+     public int comidaParaAdultDragon = 10;
 
     void Start()
     {

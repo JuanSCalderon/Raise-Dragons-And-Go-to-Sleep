@@ -11,6 +11,7 @@ public class SleepController : MonoBehaviour
     public int isSleepingCount=0;
     private ControladorCicloDia cicloNocheScript; 
     [SerializeField] private GameObject controladorCicloNoche; // Referencia al GameObject del ControladorCicloNoche
+    [SerializeField] private DragonAlimentationController dragonAlimentationController;
     public delegate void OnPlayerSleep();
     public event OnPlayerSleep OnPlayerSleepEvent;
 
@@ -35,6 +36,7 @@ public class SleepController : MonoBehaviour
     {
         if (playerInHouse && Input.GetKeyDown(KeyCode.G))
         {
+
             particulas.Play();
             Debug.Log("El personaje fue a dormir");
             MakePlayerTransparent();

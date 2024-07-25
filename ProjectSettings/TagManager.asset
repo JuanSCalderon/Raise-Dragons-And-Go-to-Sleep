@@ -13,6 +13,7 @@ TagManager:
   - House
   - Dragon
   - BabyDragon
+  - EnableHouse
   layers:
   - Default
   - TransparentFX
