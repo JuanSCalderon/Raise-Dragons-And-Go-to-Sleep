@@ -6,13 +6,23 @@ using DG.Tweening;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] bool isPlayer;
-    [SerializeField] Sprite playerSprite; // Sprite para el jugador
-    [SerializeField] Sprite dragonSprite; // Sprite para el dragón
+    public string unitName;
+    [SerializeField] bool isPlayerUnit;
+    [SerializeField] Sprite playerSprite;
+    [SerializeField] Sprite dragonSprite;
     Image image;
     Vector3 originalPos;
     Color originalColor;
+    public int maxHP = 30;
+    public int currentHP = 30;
+
+    public ParticleSystem fireParticle;
+    public ParticleSystem waterParticle;
+    public ParticleSystem windParticle;
+    public ParticleSystem groundParticle;
+    public ParticleSystem breathfireParticle;
+    public ParticleSystem clawsParticle;
+
 
     private void Awake()
     {
@@ -23,17 +33,17 @@ public class BattleUnit : MonoBehaviour
 
     public void PlayEnterAnimation()
     {
-        if(isPlayer)
+        if(isPlayerUnit)
             image.transform.localPosition = new Vector3(-550f, originalPos.y);
         else
-            image.transform.localPosition = new Vector3(-149f, originalPos.y);
-        image.transform.DOLocalMoveX(originalPos.x, 1f);
+            image.transform.localPosition = new Vector3(550f, originalPos.y);
+            image.transform.DOLocalMoveX(originalPos.x, 1f);
     }
 
     public void PlayAttackAnimation()
     {
         var sequence = DOTween.Sequence();
-        if (isPlayer)
+        if (isPlayerUnit)
         sequence.Append(image.transform.DOLocalMoveX(originalPos.x + 50f, 0.25f));
         else
         sequence.Append(image.transform.DOLocalMoveX(originalPos.x - 50f, 0.25f));
@@ -65,55 +75,86 @@ public class BattleUnit : MonoBehaviour
         }
     }
 
-    [System.Serializable]
-    public class MoveBase
+[System.Serializable]
+public class MoveBase
+{
+    public string Name { get; set; }
+    public int Power { get; set; }
+    public string Type { get; set; }
+
+    public MoveBase(string name, int power, string type)
     {
-        public string Name { get; set; }
-        public int Power { get; set; }
-
-        public MoveBase(string name, int power, int pp)
-        {
-            Name = name;
-            Power = power;
-        }
+        Name = name;
+        Power = power;
+        Type = type;
     }
-
-    public List<Move> Moves { get; private set; }
+}
+public List<Move> Moves { get; private set; }
 public void Setup()
 {
-    image.sprite = isPlayer ? playerSprite : dragonSprite;
-
+    image.sprite = isPlayerUnit ? playerSprite : dragonSprite;
     PlayEnterAnimation();
-
-    Moves = new List<Move>()
+    
+    if (isPlayerUnit)
     {
-        new Move(new MoveBase("Fire", 25, 10)),
-        new Move(new MoveBase("Water", 20, 15)),
-        new Move(new MoveBase("Wind", 15, 20)),
-        new Move(new MoveBase("Ground", 30, 5))
-    };
+        Moves = new List<Move>()
+        {
+            new Move(new MoveBase("Fire", 5, "Fire")),
+            new Move(new MoveBase("Water", 3, "Water")),
+            new Move(new MoveBase("Wind", 4, "Wind")),
+            new Move(new MoveBase("Ground", 2, "Ground")),
+        };
+    }
+    else
+    {
+        Moves = new List<Move>()
+        {
+            new Move(new MoveBase("Claws", 6, "Claws")),
+            new Move(new MoveBase("Breath of fire", 7, "BreathFire")),
+        };
+    }
 
     image.color = originalColor;
-    
 }
-    // public bool TakeDamage(Move move)
-    // {
-    //     float modifiers = Random.Range(0.85f, 1.0f);
-    //     float a = (2 * attacker + 10) / 250;
-    //     float d = a * move.Base.Power * ((float)attacker / defense) + 2;
-    //     int damage = Mathf.FloorToInt(d * modifiers);
 
-    //     HP -= damage;
-    //     if (HP <= 0)
-    //     {
-    //         HP = 0;
-    //         return true;
-    //     }
+public void ActivateParticle(string moveType)
+{
+    switch (moveType)
+    {
+        case "Fire":
+            fireParticle.Play();
+            break;
+        case "Water":
+            waterParticle.Play();
+            break;
+        case "Wind":
+            windParticle.Play();
+            break;
+        case "Ground":
+            groundParticle.Play();
+            break;
+        case "BreathFire":
+            breathfireParticle.Play();
+            break;
+        case "Claws":
+            clawsParticle.Play();
+            break;
+    }
+}
+public bool TakeDamage(Move move)
+{
+    int damage = move.Base.Power;
 
-    //     return false;
-    // }
-
-    // public Move GetRandomMove() {
-
-    //     }
+    currentHP -= damage;
+    PlayHitAnimation();
+    if(currentHP <= 0)
+    {
+        PlayFaintAnimation();
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 }

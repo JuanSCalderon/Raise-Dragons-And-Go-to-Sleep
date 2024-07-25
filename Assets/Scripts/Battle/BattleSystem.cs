@@ -1,20 +1,28 @@
-// using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BattleState { Start, PlayerAction, MoveSelection, DragonMove, Busy, PlayerRun, PlayerTalk, PlayerUseItem }
+public enum BattleState { Start, PlayerAction, MoveSelection, TalkSelection, ItemSelection, DragonMove, Won, Lost }
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleUnit playerUnit;
+    [SerializeField] BattleUnit dragonUnit;
     [SerializeField] BattleHud playerHud;
-    [SerializeField] BattleHud enemyHud;
+    [SerializeField] BattleHud dragonHud;
+    // [SerializeField] GameObject playerPrefab;
     [SerializeField] BattleDialogBox dialogBox;
-    // public event Action OnBattleOver;
+    // [SerializeField] Recolection recolection;
 
     BattleState state;
     int currentAction;
+    int currentTalk;
     int currentMove;
+    int currentItem;
+    private int lastMoveIndex = 0;
+    
+    
+    bool[] dialoguesUsed = new bool[2];
 
     private void Start()
     {
@@ -24,7 +32,7 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator SetupBattle()
     {
         playerUnit.Setup();
-        //playerHud.SetHUD(playerUnit);
+        dragonUnit.Setup();
         yield return dialogBox.TypeDialog("Your dear dragon appeared!");
         yield return new WaitForSeconds(1f);
 
@@ -46,61 +54,141 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
-IEnumerator RunAttempt()
+    void TalkSelection()
 {
-    state = BattleState.PlayerRun;
+    state = BattleState.TalkSelection;
     dialogBox.EnableActionSelector(false);
-    dialogBox.EnableDialogText(true);
-    yield return dialogBox.TypeDialog("You cannot run because the dragon is angry!");
-    yield return new WaitForSeconds(2);
-    PlayerAction();
+    dialogBox.EnableDialogText(false);
+    dialogBox.EnableDialogSelector(true);
 }
+
+    void ItemSelection()
+{
+    state = BattleState.ItemSelection;
+    dialogBox.EnableActionSelector(false);
+    dialogBox.EnableDialogText(false);
+    dialogBox.EnableItemSelector(true);
+
+    // int coliflorCount = recolection.ColiflorCount;
+    // int remolachaCount = recolection.RemolachaCount;
+    
+    // dialogBox.UpdateItemDisplay(0, coliflorCount);
+    // dialogBox.UpdateItemDisplay(1, remolachaCount);
+}
+    void EndBattle()
+    {
+        if(state == BattleState.Won)
+        {
+            StartCoroutine(dialogBox.TypeDialog("You won the battle!"));
+        } else if(state == BattleState.Lost)
+        {
+            StartCoroutine(dialogBox.TypeDialog("You lost the battle!"));
+        }
+    }
+
 
     IEnumerator PlayerMove()
     {
-        state = BattleState.Busy;
-
         var move = playerUnit.Moves[currentMove];
         yield return dialogBox.TypeDialog($"You used {move.Base.Name}");
-        
 
+        playerUnit.ActivateParticle(move.Base.Type);
         playerUnit.PlayAttackAnimation();
         yield return new WaitForSeconds(1f);
 
-        // bool isFainted = playerUnit.TakeDamage(move, playerUnit);
-        // enemyHud.UpdateHP();
+            bool isDead = dragonUnit.TakeDamage(move);
+            dragonHud.SetHP(dragonUnit.currentHP);
+            yield return new WaitForSeconds(1f);
+        if(isDead)
+        {
+            state = BattleState.Won;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.DragonMove;
+            StartCoroutine(DragonMove());
+        }
+        
+    }
+IEnumerator PlayerRun()
+{
+    dialogBox.EnableActionSelector(false);
+    yield return dialogBox.TypeDialog("You cannot run because the dragon is angry!");
+    yield return new WaitForSeconds(2f);
+    PlayerAction();
+}
+IEnumerator UsingItem()
+{
+    dialogBox.EnableItemSelector(false);
+    dialogBox.EnableDialogText(true);
 
-        // if (isFainted)
-        // {
-        //     yield return dialogBox.TypeDialog("The dragon fainted");
-        // }
-        // else
-        // {
-        //    // StartCoroutine(DragonMove());
-        // }
+    yield return dialogBox.TypeDialog("You used the item!");
 
+    playerUnit.PlayAttackAnimation();
+    yield return new WaitForSeconds(1f);
+    PlayerAction();
+}
+
+IEnumerator RespondToDialogSelection()
+{
+    dialogBox.EnableDialogSelector(false);
+    dialogBox.EnableDialogText(true);
+
+    // Marcar el diálogo actual como usado
+    dialoguesUsed[currentTalk] = true;
+
+    switch (currentTalk)
+    {
+        case 0:
+            yield return dialogBox.TypeDialog("You didn't feed me what I wanted!");
+            break;
+        case 1:
+            yield return dialogBox.TypeDialog("It was always on the other side of my nest...");
+            break;
     }
 
-    // IEnumerator DragonMove()
-    // {
-    //     state = BattleState.DragonMove;
+    yield return new WaitForSeconds(2f);
+    
+    StartCoroutine(DragonMove());
 
-    //     var move = playerUnit.Moves.GetRandomMove();
-    //     yield return dialogBox.TypeDialog($"Dragon used {move.Base.Name}");
-    //     yield return new WaitForSeconds(1f);
+    if (Array.TrueForAll(dialoguesUsed, used => used))
+    {
+        StartCoroutine(VerifyDialogsAndEnableItem());
+    }
+}
+IEnumerator VerifyDialogsAndEnableItem()
+{
+    yield return new WaitUntil(() => Array.TrueForAll(dialoguesUsed, used => used));
+    dialogBox.EnableItemSecret(true);
+}
 
-    //     bool isFainted = playerUnit.TakeDamage(move, playerUnit);
-    //     playerHud.UpdateHP();
+IEnumerator DragonMove()
+{
 
-    //     if (isFainted)
-    //     {
-    //         yield return dialogBox.TypeDialog("You are fainted");
-    //     }
-    //     else
-    //     {
-    //         PlayerAction();
-    //     }
-    // }
+    state = BattleState.DragonMove;
+    lastMoveIndex = 1 - lastMoveIndex;
+    var move = dragonUnit.Moves[lastMoveIndex];
+
+    yield return dialogBox.TypeDialog($"Dragon used {move.Base.Name}");
+    playerUnit.ActivateParticle(move.Base.Type);
+    yield return new WaitForSeconds(1f);
+
+    bool isDead = playerUnit.TakeDamage(move);
+    playerHud.SetHP(playerUnit.currentHP);
+    yield return new WaitForSeconds(1f);
+
+    if(isDead)
+    {
+        state = BattleState.Lost;
+        EndBattle();
+    }
+    else
+    {
+        state = BattleState.PlayerAction;
+        PlayerAction();
+    }
+}
 
     public void HandleUpdate()
     {
@@ -112,6 +200,14 @@ IEnumerator RunAttempt()
         {
             HandleMoveSelection();
         }
+        else if (state == BattleState.TalkSelection)
+    {
+        HandleTalkSelection();
+        }
+        else if (state == BattleState.ItemSelection)
+    {
+        HandleItemSelection();
+    }
     }
     void HandleActionSelection()
 {
@@ -146,14 +242,16 @@ IEnumerator RunAttempt()
                 MoveSelection();
                 break;
             case 1:
-                // Talk
+                // Run
+                StartCoroutine(PlayerRun());
                 break;
             case 2:
-                // Run
-                StartCoroutine(RunAttempt());
+                // Talk
+                TalkSelection();
                 break;
             case 3:
                 // Item
+                ItemSelection();
                 break;
         }
     }
@@ -189,4 +287,46 @@ void HandleMoveSelection(){
         StartCoroutine(PlayerMove());
 }
 }
+void HandleTalkSelection()
+{
+    if (Input.GetKeyDown(KeyCode.DownArrow))
+    {
+        if (currentTalk < 1)
+            ++currentTalk;
+    }
+    else if (Input.GetKeyDown(KeyCode.UpArrow))
+    {
+        if (currentTalk > 0)
+            --currentTalk;
+    }
+
+    dialogBox.UpdateDialogSelection(currentTalk);
+    
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        StartCoroutine(RespondToDialogSelection());
+    }
+}
+
+void HandleItemSelection()
+{
+    if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+    {
+        if (currentItem < 2)
+            ++currentItem;
+    }
+    else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+    {
+        if (currentItem > 0)
+            --currentItem;
+    }
+
+    dialogBox.UpdateItemSelection(currentItem);
+        if (Input.GetKeyDown(KeyCode.Space))
+    {
+        StartCoroutine(UsingItem());
+    }
+}
+
+
 }

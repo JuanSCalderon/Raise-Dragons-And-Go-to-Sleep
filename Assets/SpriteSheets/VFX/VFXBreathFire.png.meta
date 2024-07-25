@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f23085dc2a0addf4bb4982eeb5501eb1
+guid: 2c8162f9b0a0da24fa952d730583c546
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,34 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VFXWater2_0
+      name: VFXBreathFire_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 5
-        width: 23
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e661fdf44493a6e489fce72058784d6d
-      internalID: 1140240655
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VFXWater2_1
-      rect:
-        serializedVersion: 2
-        x: 36
+        x: 7
         y: 3
         width: 32
-        height: 28
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73418e46ceb9c724ea041be8d8fc8dcf
-      internalID: -936936409
+      spriteID: 2f1d166f998c53440a71da7950aaa7b4
+      internalID: -553135058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFXWater2_2
+      name: VFXBreathFire_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 2
-        width: 32
-        height: 29
+        x: 39
+        y: 3
+        width: 31
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5b0b5ee8a8c306498cd82510204bed6
-      internalID: 1191441297
+      spriteID: f86b8b3ae4a198246a6f6d5f5f83245b
+      internalID: -1835479882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFXWater2_3
+      name: VFXBreathFire_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 1
+        x: 70
+        y: 3
         width: 33
-        height: 32
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +173,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 975eee5146590ea44bacda20d4263f90
-      internalID: 853016953
+      spriteID: c53d8d65919e0174aa9bb790079ba160
+      internalID: -1422128209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFXBreathFire_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 3
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86262aaa59076764085bf89c4583a1d7
+      internalID: 431894577
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      VFXWater2_0: 1140240655
-      VFXWater2_1: -936936409
-      VFXWater2_2: 1191441297
-      VFXWater2_3: 853016953
+      VFXBreathFire_0: -553135058
+      VFXBreathFire_1: -1835479882
+      VFXBreathFire_2: -1422128209
+      VFXBreathFire_3: 431894577
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

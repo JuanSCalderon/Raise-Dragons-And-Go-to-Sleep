@@ -7,7 +7,12 @@ TagManager:
   - Vegetable
   - Shadow
   - Tierra
+  - BabayDragon
+  - JoungDragon
+  - AdultDragon
+  - House
   - Dragon
+  - BabyDragon
   layers:
   - Default
   - TransparentFX
