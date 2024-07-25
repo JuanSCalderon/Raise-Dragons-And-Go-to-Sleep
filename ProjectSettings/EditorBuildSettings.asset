@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PopUps.unity
     guid: f67fabafa38f6654a8d63bad43e6cbe9
+  - enabled: 1
+    path: Assets/Scenes/Brayan Scene.unity
+    guid: 754d93c703f2efd46a303ce4a2f2bc21
   m_configObjects: {}

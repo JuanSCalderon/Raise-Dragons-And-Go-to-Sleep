@@ -33,7 +33,7 @@ public class BattleSystem : MonoBehaviour
     {
         playerUnit.Setup();
         dragonUnit.Setup();
-        yield return dialogBox.TypeDialog("Your dear dragon appeared!");
+        yield return dialogBox.TypeDialog("Tu querido dragon ha aparecido!");
         yield return new WaitForSeconds(1f);
 
         PlayerAction();
@@ -42,7 +42,7 @@ public class BattleSystem : MonoBehaviour
     void PlayerAction()
     {
         state = BattleState.PlayerAction;
-        StartCoroutine(dialogBox.TypeDialog("Choose an action:"));
+        StartCoroutine(dialogBox.TypeDialog("Selecciona una accion:"));
         dialogBox.EnableActionSelector(true);
     }
 
@@ -79,10 +79,10 @@ public class BattleSystem : MonoBehaviour
     {
         if(state == BattleState.Won)
         {
-            StartCoroutine(dialogBox.TypeDialog("You won the battle!"));
+            StartCoroutine(dialogBox.TypeDialog("Has ganado la batalla!"));
         } else if(state == BattleState.Lost)
         {
-            StartCoroutine(dialogBox.TypeDialog("You lost the battle!"));
+            StartCoroutine(dialogBox.TypeDialog("Has perdido la batalla!"));
         }
     }
 
@@ -90,7 +90,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerMove()
     {
         var move = playerUnit.Moves[currentMove];
-        yield return dialogBox.TypeDialog($"You used {move.Base.Name}");
+        yield return dialogBox.TypeDialog($"Has usado {move.Base.Name}");
 
         playerUnit.ActivateParticle(move.Base.Type);
         playerUnit.PlayAttackAnimation();
@@ -114,7 +114,7 @@ public class BattleSystem : MonoBehaviour
 IEnumerator PlayerRun()
 {
     dialogBox.EnableActionSelector(false);
-    yield return dialogBox.TypeDialog("You cannot run because the dragon is angry!");
+    yield return dialogBox.TypeDialog("No puedes correr tu dragon esta furioso!");
     yield return new WaitForSeconds(2f);
     PlayerAction();
 }
@@ -123,9 +123,10 @@ IEnumerator UsingItem()
     dialogBox.EnableItemSelector(false);
     dialogBox.EnableDialogText(true);
 
-    yield return dialogBox.TypeDialog("You used the item!");
+    yield return dialogBox.TypeDialog("Has usado un item!");
 
     playerUnit.PlayAttackAnimation();
+    StartCoroutine(RespondToItemSelection());
     yield return new WaitForSeconds(1f);
     PlayerAction();
 }
@@ -141,10 +142,10 @@ IEnumerator RespondToDialogSelection()
     switch (currentTalk)
     {
         case 0:
-            yield return dialogBox.TypeDialog("You didn't feed me what I wanted!");
+            yield return dialogBox.TypeDialog("No me diste lo que quiero comer!");
             break;
         case 1:
-            yield return dialogBox.TypeDialog("It was always on the other side of my nest...");
+            yield return dialogBox.TypeDialog("Siempre estuvieron al otro lado de mi nido...");
             break;
     }
 
@@ -156,6 +157,28 @@ IEnumerator RespondToDialogSelection()
     {
         StartCoroutine(VerifyDialogsAndEnableItem());
     }
+}
+IEnumerator RespondToItemSelection()
+{
+    dialogBox.EnableToItemSelector(false);
+    dialogBox.EnableDialogText(true);
+    
+
+    switch (currentItem)
+    {
+        case 0:
+            yield return dialogBox.TypeDialog("No me gusta el coliflor!");
+            break;
+        case 1:
+            yield return dialogBox.TypeDialog("No me gusta la remolacha!");
+            break;
+        case 2:
+        yield return dialogBox.TypeDialog("Has ganado la batalla!");
+        break;
+    }
+
+    yield return new WaitForSeconds(2f);
+
 }
 IEnumerator VerifyDialogsAndEnableItem()
 {
@@ -170,7 +193,7 @@ IEnumerator DragonMove()
     lastMoveIndex = 1 - lastMoveIndex;
     var move = dragonUnit.Moves[lastMoveIndex];
 
-    yield return dialogBox.TypeDialog($"Dragon used {move.Base.Name}");
+    yield return dialogBox.TypeDialog($"Dragon ha usado {move.Base.Name}");
     playerUnit.ActivateParticle(move.Base.Type);
     yield return new WaitForSeconds(1f);
 
@@ -327,6 +350,4 @@ void HandleItemSelection()
         StartCoroutine(UsingItem());
     }
 }
-
-
 }

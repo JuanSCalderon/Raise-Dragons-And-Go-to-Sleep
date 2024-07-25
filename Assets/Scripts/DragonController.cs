@@ -9,7 +9,7 @@ public class DragonController : MonoBehaviour
     [SerializeField] private DragonState currentState;
     [SerializeField] private Animator animator;
     private float speed = 1f;
-    private float xRangeMin = 7f;
+    private float xRangeMin = -2f;
     private float xRangeMax = 12f;
     private float yRangeMin = -1f;
     private float yRangeMax = -4.12f;
@@ -19,7 +19,7 @@ public class DragonController : MonoBehaviour
 
     void Start()
     {
-        initialPosition = new Vector3(17f, -8.62f, 0.094f);  //posición inicial del dragón
+        initialPosition = gameObject.transform.position; //posición inicial del dragón
         ChangeAnimation(currentState);
     }
 

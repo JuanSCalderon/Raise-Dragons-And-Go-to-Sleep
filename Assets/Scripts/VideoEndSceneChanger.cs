@@ -17,6 +17,7 @@ public class VideoEndSceneChanger : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("Brayan Scene");
+        AudioManager.Instance.PlayMusic("GameMusic");
     }
 }
