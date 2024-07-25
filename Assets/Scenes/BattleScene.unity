@@ -180,9 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You
-
-'
+  m_text: Aldeano
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -325,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Couliflower x4
+  m_text: Coliflor x4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -5593,7 +5591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item
+  m_text: Bolsa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -10727,7 +10725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ground
+  m_text: Espora
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -11187,7 +11185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wind
+  m_text: Torbellino
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -21358,7 +21356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sheep meat x1
+  m_text: Carne de oveja x1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -22002,7 +22000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What do you want to eat?
+  m_text: Que quieres comer?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -22494,7 +22492,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fire
+  m_text: 'Flama
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -23403,7 +23403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Radish x2
+  m_text: Remolacha x2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -23598,7 +23598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Water
+  m_text: Aqua doble
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -23733,9 +23733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Fight
-
-'
+  m_text: Luchar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -23870,7 +23868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is a test dialog
+  m_text: Este es un dialogo de prueba
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -24089,7 +24087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Run
+  m_text: 'Huir
 
 '
   m_isRightToLeft: 0
@@ -30181,7 +30179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Talk
+  m_text: Hablar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
@@ -30324,7 +30322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Why are you so angry?
+  m_text: Por que estas tan enfadado?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}
   m_sharedMaterial: {fileID: -5931603134960578280, guid: 2cb56331ba4574fd49c4c58214a69076, type: 2}

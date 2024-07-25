@@ -82,7 +82,10 @@ public class BattleDialogBox : MonoBehaviour
     {
         itemSecret.SetActive(enable);
     }
-
+        public void EnableToItemSelector(bool enabled)
+    {
+        itemSelector.SetActive(enabled);
+    }
 public void UpdateActionSelection(int selectedAction)
     {
         // Actualiza el sprite y el color de cada botón basado en la acción seleccionada
@@ -130,6 +133,7 @@ public void UpdateActionSelection(int selectedAction)
             
         }
     }
+
     public void UpdateItemSelection(int selectedItem)
     {
         for (int i = 0; i < itemTexts.Count; ++i)

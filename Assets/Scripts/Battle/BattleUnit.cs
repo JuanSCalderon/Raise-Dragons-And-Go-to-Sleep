@@ -99,18 +99,18 @@ public void Setup()
     {
         Moves = new List<Move>()
         {
-            new Move(new MoveBase("Fire", 5, "Fire")),
-            new Move(new MoveBase("Water", 3, "Water")),
-            new Move(new MoveBase("Wind", 4, "Wind")),
-            new Move(new MoveBase("Ground", 2, "Ground")),
+            new Move(new MoveBase("Flama", 5, "Fire")),
+            new Move(new MoveBase("Aqua Doble", 3, "Water")),
+            new Move(new MoveBase("Torbellino", 4, "Wind")),
+            new Move(new MoveBase("Espora", 2, "Ground")),
         };
     }
     else
     {
         Moves = new List<Move>()
         {
-            new Move(new MoveBase("Claws", 6, "Claws")),
-            new Move(new MoveBase("Breath of fire", 7, "BreathFire")),
+            new Move(new MoveBase("Garras", 6, "Claws")),
+            new Move(new MoveBase("Aliento de fuego", 7, "BreathFire")),
         };
     }
 
