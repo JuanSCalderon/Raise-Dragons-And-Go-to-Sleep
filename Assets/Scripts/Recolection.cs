@@ -47,7 +47,7 @@ public class Recolection : MonoBehaviour
     private void UpdateRandomDelay()
     {
         // Establece delay con un nuevo valor aleatorio
-        delay = UnityEngine.Random.Range(10f, 15f);
+        delay = UnityEngine.Random.Range(10f, 10f);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
