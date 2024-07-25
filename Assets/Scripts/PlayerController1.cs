@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class PlayerController1 : MonoBehaviour
 {
+    [SerializeField] private DragonAlimentationController dragonAlimentationController;
     public float speed;
     private Vector2 moveAxis;
     private Vector2 moveDir;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
     public event Action OnEncountered;
 
     void Start()
@@ -44,6 +44,9 @@ public class PlayerController1 : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
+
+        // Comprobar si el dragón adulto ha recibido 20 comidas
+        CheckDragonFoodCount();
     }
 
     void FixedUpdate()
@@ -51,12 +54,29 @@ public class PlayerController1 : MonoBehaviour
         rb.velocity = moveDir * Time.fixedDeltaTime;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Dragon"))
+    void CheckDragonFoodCount()
+    {
+        if (dragonAlimentationController.ComidaAdultDragonCount == 20)
+        {
+            ActivationBattle();
+        }
+    }
+
+    void ActivationBattle()
     {
         animator.SetBool("walking", false);
-        OnEncountered();
+        OnEncountered?.Invoke();
     }
-}
+
+    public void PickUpVegetables()
+    {
+        animator.SetBool("carrying", true);
+        StartCoroutine(DisableCarryingAnimation());
+    }
+
+    private IEnumerator DisableCarryingAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("carrying", false);
+    }
 }

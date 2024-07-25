@@ -10,7 +10,7 @@ public class DragonController : MonoBehaviour
     [SerializeField] private Animator animator;
     private float speed = 1f;
     private float xRangeMin = -1f;
-    private float xRangeMax = 10f;
+    private float xRangeMax = 5f;
     private float yRangeMin = -1f;
     private float yRangeMax = -2.12f;
     private Vector3 initialPosition;

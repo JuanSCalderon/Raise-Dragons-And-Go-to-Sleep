@@ -12,6 +12,7 @@ public class Recolection : MonoBehaviour
     private float delay;
     private bool isInTierraZone = false;
     [SerializeField] private ParticleSystem particulas;
+    [SerializeField] private PlayerController1 playerController;
 
     // Lista para mantener referencias a los vegetales
     private List<GameObject> vegetableList = new List<GameObject>();
@@ -119,7 +120,7 @@ public class Recolection : MonoBehaviour
             // Agregar aqui el código para la interfaz de usuario
             Debug.Log("Beets: " + remolacha + ", Cauliflowers: " + coliflor);
             OnVegetableCountChangedEvent?.Invoke();
-
+            playerController.PickUpVegetables();
         }
         else
         {
