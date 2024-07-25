@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Story.unity
     guid: cb9962e581b5ab744a42b332582b3eeb
   - enabled: 1
+    path: Assets/Scenes/FarmScene.unity
+    guid: 0ccd8e713ba7789429c1d3c2b7e9a9f6
+  - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 4014c00a3bbad234980d8d5d908ca2e2
   - enabled: 1
