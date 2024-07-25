@@ -12,6 +12,7 @@ TagManager:
   - AdultDragon
   - House
   - Dragon
+  - BabyDragon
   layers:
   - Default
   - TransparentFX

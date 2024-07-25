@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Recolection : MonoBehaviour
 {
-    public int coliflor = 0;
-    public int remolacha = 0;
-     public int RemolachaCount => remolacha;
+    private int coliflor = 0;
+    private int remolacha = 0;
+    public int RemolachaCount => remolacha;
     public int ColiflorCount => coliflor;
     private Vegetable currentVegetable = null;
     private float delay;
@@ -15,11 +15,13 @@ public class Recolection : MonoBehaviour
 
     // Lista para mantener referencias a los vegetales
     private List<GameObject> vegetableList = new List<GameObject>();
+    public delegate void OnVegetableCountChanged();
+    public event OnVegetableCountChanged OnVegetableCountChangedEvent;
 
     private void Start()
     {
         // Encuentra y agrega todos los vegetales en la escena al inicio
-        AddAllVegetablesToList(); 
+        AddAllVegetablesToList();
     }
 
     private void Update()
@@ -34,18 +36,19 @@ public class Recolection : MonoBehaviour
         if (isInTierraZone && Input.GetKeyDown(KeyCode.Space))
         {
             bool hasInactiveVegetables = vegetableList.Exists(veg => !veg.activeSelf);
-            if (hasInactiveVegetables){
-            UpdateRandomDelay();
-            StartCoroutine(ActivateVegetablesAfterDelay());
-            particulas.Play();
-            Debug.Log("Estás en la zona de tierra y se activarán los vegetales de 1 a 2 minutos.");
+            if (hasInactiveVegetables)
+            {
+                UpdateRandomDelay();
+                StartCoroutine(ActivateVegetablesAfterDelay());
+                particulas.Play();
+                Debug.Log("Estás en la zona de tierra y se activarán los vegetales de 1 a 2 minutos.");
             }
         }
     }
     private void UpdateRandomDelay()
     {
         // Establece delay con un nuevo valor aleatorio
-        delay = UnityEngine.Random.Range(60f, 120f);
+        delay = UnityEngine.Random.Range(10f, 10f);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -81,7 +84,7 @@ public class Recolection : MonoBehaviour
         foreach (GameObject vegetable in vegetableList)
         {
             vegetable.SetActive(true);
-            Debug.Log("Los vegetales se cultivaron en "+ delay+ " segundos.");
+            Debug.Log("Los vegetales se cultivaron en " + delay + " segundos.");
             particulas.Stop();
 
         }
@@ -97,11 +100,12 @@ public class Recolection : MonoBehaviour
     }
 
 
-    public void CollectVegetable(Vegetable.VegetableType vegetableType){
+    public void CollectVegetable(Vegetable.VegetableType vegetableType)
+    {
         float randomValue = UnityEngine.Random.value;
 
-        // 50% de probabilidad para entregar el vegetal
-        if (randomValue > 0.20f)
+        // 30% de probabilidad para entregar el vegetal
+        if (randomValue > 0.40f)
         {
             switch (vegetableType)
             {
@@ -114,16 +118,29 @@ public class Recolection : MonoBehaviour
             }
             // Agregar aqui el código para la interfaz de usuario
             Debug.Log("Beets: " + remolacha + ", Cauliflowers: " + coliflor);
+            OnVegetableCountChangedEvent?.Invoke();
+
         }
         else
         {
             Debug.Log("El vegetal no fue entregado.");
         }
 
-        // esta parte del codigo se encargará de que si alcanza x cantidad de comida, la escena se haga de noche
-        if(remolacha + coliflor == 10 ){
-
+    }
+    public void UseVegetable(Vegetable.VegetableType vegetableType)
+    {
+        switch (vegetableType)
+        {
+            case Vegetable.VegetableType.Beet:
+                if (remolacha > 0) remolacha--;
+                break;
+            case Vegetable.VegetableType.Cauliflower:
+                if (coliflor > 0) coliflor--;
+                break;
         }
+        Debug.Log("Beets: " + remolacha + ", Cauliflowers: " + coliflor);
+        OnVegetableCountChangedEvent?.Invoke();
+
     }
 }
 
