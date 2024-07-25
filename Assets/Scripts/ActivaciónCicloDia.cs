@@ -23,7 +23,7 @@ public class ActivaciónCicloDia : MonoBehaviour
         {
             // Verificar si el BabyDragon ha comido 5 veces
             Debug.Log("Comida BabyDragon Count: " + dragonAlimentationController.ComidaBabyDragonCount);
-            if (dragonAlimentationController.ComidaBabyDragonCount >= 5 && !cicloDiaActivadoPorBabyDragon)
+            if (dragonAlimentationController.ComidaBabyDragonCount >= 10 && !cicloDiaActivadoPorBabyDragon)
             {
                 ActivarCicloDia();
                 cicloDiaActivadoPorBabyDragon = true; // Asegúrate de que esto solo se active una vez
@@ -32,7 +32,7 @@ public class ActivaciónCicloDia : MonoBehaviour
 
             // Verificar si el YoungDragon ha comido 10 veces
             Debug.Log("Comida YoungDragon Count: " + dragonAlimentationController.ComidaYoungDragonCount);
-            if (dragonAlimentationController.ComidaYoungDragonCount >= 10 && !cicloDiaActivadoPorYoungDragon)
+            if (dragonAlimentationController.ComidaYoungDragonCount >= 15 && !cicloDiaActivadoPorYoungDragon)
             {
 
                 ActivarCicloDia();

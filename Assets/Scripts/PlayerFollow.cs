@@ -18,7 +18,7 @@ public class PlayerFollow : MonoBehaviour
     void Awake() {
         posX= targetPoseX + dereMax;
         posy = targetPoseY + alturaMin;
-        transform.position= Vector3.Lerp(transform.position, new Vector3(posX,posy,-1),1);
+        transform.position= Vector3.Lerp(transform.position, new Vector3(posX,posy,-4),1);
     }
     void MoveCam(){
         if(encendida){
@@ -32,7 +32,7 @@ public class PlayerFollow : MonoBehaviour
                     posy= targetPoseY;
                 }
             }
-            transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posy,-1),speed*Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posy,-4),speed*Time.deltaTime);
         }
     }
     void LateUpdate()
