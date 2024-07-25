@@ -6,17 +6,17 @@ using TMPro;
 
 public class BattleHud : MonoBehaviour
 {
-    [SerializeField] HPBar hpBar;
+    [SerializeField] Slider hpBar;
     [SerializeField] TMP_Text nameText;
 
-    public void SetHUD(BattleUnit player)
+    public void SetHUD(BattleUnit unit)
     {
-    //    _player = player;
-        nameText.text = "Player";
-        hpBar.SetHP((float) 45 / 50);
+        nameText.text = unit.unitName;
+        hpBar.maxValue = unit.maxHP;
+        hpBar.value = unit.currentHP;
     }
-    // public void UpdateHP()
-    //     {
-    //     hpBar.SetHP((float) _player.HP / _player.MaxHP);
-    // }
+public void SetHP(int hp)
+{
+    hpBar.value = hp;
+}
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Recolection : MonoBehaviour
 {
-    private int coliflor = 0;
-    private int remolacha = 0;
+    public int coliflor = 0;
+    public int remolacha = 0;
      public int RemolachaCount => remolacha;
     public int ColiflorCount => coliflor;
     private Vegetable currentVegetable = null;

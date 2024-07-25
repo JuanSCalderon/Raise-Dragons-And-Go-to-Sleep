@@ -11,9 +11,19 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] TMPro.TMP_Text dialogText;
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveSelector;
-    [SerializeField] GameObject moveDetails;
+    [SerializeField] GameObject dialogSelector;
+    [SerializeField] GameObject itemSelector;
+    [SerializeField] GameObject itemSecret;
     [SerializeField] List<TextMeshProUGUI> actionTexts;
     [SerializeField] List<TextMeshProUGUI> moveTexts;
+    [SerializeField] List<TextMeshProUGUI> dialogTexts;
+    [SerializeField] List<TextMeshProUGUI> itemTexts;
+
+    // Referencias a los GameObjects de los botones
+    [SerializeField] GameObject normalActionButton;
+    [SerializeField] GameObject runActionButton;
+    [SerializeField] GameObject talkActionButton;
+    [SerializeField] GameObject itemActionButton;
 
     [SerializeField] Sprite normalStateSprite;
     [SerializeField] Sprite selectedStateSprite;
@@ -23,6 +33,8 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] Sprite selectedStateSpriteTalk;
     [SerializeField] Sprite normalStateSpriteRunItem;
     [SerializeField] Sprite selectedStateSpriteRunItem;
+    [SerializeField] Color talkColor = new Color32(0xA5, 0xF5, 0x95, 0xFF); // Color para "talk"
+[SerializeField] Color itemColor = new Color32(0xE5, 0xE4, 0xA3, 0xFF); // Color para "item"
     
 
 
@@ -54,22 +66,38 @@ public class BattleDialogBox : MonoBehaviour
     public void EnableMoveSelector(bool enable)
     {
         moveSelector.SetActive(enable);
-        moveDetails.SetActive(enable);
     }
 
-    public void UpdateActionSelection(int selectedAction)
+    public void EnableDialogSelector(bool enable)
     {
-        for (int i = 0; i < actionTexts.Count; ++i)
+        dialogSelector.SetActive(enable);
+    }
+
+    public void EnableItemSelector(bool enable)
+    {
+        itemSelector.SetActive(enable);
+    }
+
+    public void EnableItemSecret(bool enable)
+    {
+        itemSecret.SetActive(enable);
+    }
+
+public void UpdateActionSelection(int selectedAction)
+    {
+        // Actualiza el sprite y el color de cada botón basado en la acción seleccionada
+        UpdateButton(normalActionButton, selectedAction == 0, normalStateSprite, selectedStateSprite);
+        UpdateButton(runActionButton, selectedAction == 1, normalStateSpriteRun, selectedStateSpriteRun);
+        UpdateButton(talkActionButton, selectedAction == 2, normalStateSpriteTalk, selectedStateSpriteTalk, talkColor);
+        UpdateButton(itemActionButton, selectedAction == 3, normalStateSpriteRunItem, selectedStateSpriteRunItem, itemColor);
+    }
+    private void UpdateButton(GameObject buttonGameObject, bool isSelected, Sprite normalSprite, Sprite selectedSprite, Color? color = null)
+    {
+        Image buttonImage = buttonGameObject.GetComponent<Image>();
+        buttonImage.sprite = isSelected ? selectedSprite : normalSprite;
+        if (color.HasValue)
         {
-            Image parentImage = actionTexts[i].GetComponentInParent<Image>();
-            if (i == selectedAction)
-            
-                parentImage.sprite = i == 0 ? selectedStateSprite : selectedStateSpriteRun;
-            
-            else
-            
-                parentImage.sprite = i == 0 ? normalStateSprite : normalStateSpriteRun;
-            
+            buttonImage.color = color.Value;
         }
     }
 
@@ -88,19 +116,41 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    // public void SetMoveNames(List<MoveBase> moves)
-    // {
-    //     for (int i = 0; i < moveTexts.Count; ++i)
-    //     {
-    //         if (i < moves.Count)
-    //         {
-    //             moveTexts[i].text = moves[i].Name;
-    //         }
-    //         else
-    //         {
-    //             moveTexts[i].text = "-";
-    //         }
-    //     }
-    // }
+    public void UpdateDialogSelection(int selectedDialog)
+    {
+        for (int i = 0; i < dialogTexts.Count; ++i)
+        {
+            if (i == selectedDialog)
+            
+                dialogTexts[i].color = highlightedColor;
+            
+            else
+            
+                dialogTexts[i].color = Color.black;
+            
+        }
+    }
+    public void UpdateItemSelection(int selectedItem)
+    {
+        for (int i = 0; i < itemTexts.Count; ++i)
+        {
+            if (i == selectedItem)
+            
+                itemTexts[i].color = highlightedColor;
+            
+            else
+            
+                itemTexts[i].color = Color.black;
+            
+        }
+    }
 
+// public void UpdateItemDisplay(int itemIndex, int itemCount)
+// {
+    
+//     if(itemIndex >= 0 && itemIndex < itemTexts.Count)
+//     {
+//         itemTexts[itemIndex].text = $"Item {itemIndex + 1}: {itemCount}";
+//     }
+// }
 }
