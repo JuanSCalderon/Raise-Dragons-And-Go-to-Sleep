@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5afa2a8041da34a80d6f9cc0d3c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comidaEntregada: {fileID: 1888839797}
+  comidaEntregada: {fileID: 1888839809}
   controladorCicloNoche: {fileID: 1857630197}
   sleepController: {fileID: 1450757814}
   remolachaImage: {fileID: 196674720}
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5afa2a8041da34a80d6f9cc0d3c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comidaEntregada: {fileID: 1888839797}
+  comidaEntregada: {fileID: 1888839809}
   controladorCicloNoche: {fileID: 1857630197}
   sleepController: {fileID: 1450757814}
   remolachaImage: {fileID: 196674720}
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -67.86192, w: -34.804688}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5653,7 +5653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   luzglobal: {fileID: 1770902826}
   ciclosDia:
-  - colorCiclo: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 0}
+  - colorCiclo: {r: 0.64106447, g: 0.70670545, b: 0.9245283, a: 0}
     nombreCiclo: 
   - colorCiclo: {r: 0.018689923, g: 0.019163905, b: 0.18867922, a: 0}
     nombreCiclo: 
@@ -6060,7 +6060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.200012, y: 17.999992}
+  m_AnchoredPosition: {x: 25.200012, y: -13.3}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252814717
@@ -6146,7 +6146,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 5.150238, w: 0}
+  m_margin: {x: 0, y: -27.147003, z: -59.182922, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6680,10 +6680,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1676943002150927120, guid: 4b88a53f95c0bdc4283af0ad532cf354, type: 3}
-      propertyPath: particulas
-      value: 
-      objectReference: {fileID: 363114300}
     - target: {fileID: 1676943002150927121, guid: 4b88a53f95c0bdc4283af0ad532cf354, type: 3}
       propertyPath: m_Size.x
       value: 0.11659322
@@ -11901,7 +11897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5afa2a8041da34a80d6f9cc0d3c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comidaEntregada: {fileID: 1888839797}
+  comidaEntregada: {fileID: 1888839809}
   controladorCicloNoche: {fileID: 1857630197}
   sleepController: {fileID: 1450757814}
   remolachaImage: {fileID: 196674720}
@@ -11982,31 +11978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af55337e56f3e64f954dccec296ac13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1888839797 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1676943002150927120, guid: 4b88a53f95c0bdc4283af0ad532cf354, type: 3}
-  m_PrefabInstance: {fileID: 1667240640}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888839793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b81ce99771ea3b4fbafe93b241908f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1888839807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888839793}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e17f417d3ddc745884ab5232977d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controladorCicloDia: {fileID: 0}
-  dragonAlimentationController: {fileID: 1888839808}
 --- !u!114 &1888839808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12019,7 +11990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5afa2a8041da34a80d6f9cc0d3c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comidaEntregada: {fileID: 1888839797}
+  comidaEntregada: {fileID: 0}
   controladorCicloNoche: {fileID: 895173558}
   sleepController: {fileID: 1450757814}
   remolachaImage: {fileID: 196674720}
@@ -12031,6 +12002,19 @@ MonoBehaviour:
   adultDragon: {fileID: 1833479426}
   comidaParaYoungDragon: 5
   comidaParaAdultDragon: 10
+--- !u!114 &1888839809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888839793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b81ce99771ea3b4fbafe93b241908f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particulas: {fileID: 363114300}
 --- !u!1 &1891050096
 GameObject:
   m_ObjectHideFlags: 0
