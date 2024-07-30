@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
         // AudioManager.Instance.PlayMusic(gameMusic);
 
         // Cambiar la escena a Story
-        SceneManager.LoadSceneAsync("Story");
+        SceneManager.LoadSceneAsync("FarmScene");
     }
 
     public void QuitGame()
